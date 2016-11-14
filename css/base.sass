@@ -1,0 +1,180 @@
+@import reset
+
+=transition($trans)
+  -webkit-transition: $trans
+  -moz-transition: $trans
+  -ms-transition: $trans
+  -o-transition: $trans
+  transition: $trans
+
+body
+  margin: 0
+  padding: 1em
+  font-family: 'Abel', cursive
+  font-weight: normal
+  background: #9c9c9c
+
+
+header
+  text-align: center
+  width: 100%
+
+  h1
+    font-size: 4em
+    text-align: center
+    font-weight: bold
+    color: white
+    cursor: pointer
+
+.row 
+  margin: 0
+  margin-top: 1em
+
+.center
+  text-align: center
+
+.container
+  width: 60%
+  max-width: 80rem
+  padding: 2em
+  margin: 2em auto
+  border: 1px solid #c3c3c3
+  border-radius: 2px
+  background: #efefef
+
+  h1
+    font-size: 2em
+
+    span
+      cursor: pointer
+
+  p
+    margin-top: .2em
+
+  .active
+    font-weight: bold
+
+  .search
+    position: relative
+    width: 90%
+    max-width: 90%
+    margin: 1em auto 
+
+    #searchfield
+      font-size: 1.5em
+      width: 100%
+      position: relative
+      padding: .4em
+
+    .fa-search
+      position: absolute
+      right: 1.2em
+      top: .5em
+      color: #D3D3D3
+      font-size: 1.5em
+
+  .tablelabel
+    text-align: left
+
+  .movieblock
+    margin: 2em
+    padding: 2em
+    border: 1px solid #9a9a9a
+
+    .poster
+      text-align: center
+
+      .gridposter
+        margin: 0 auto
+
+    .details
+      padding: 0 1em
+
+      .title
+        font-weight: bold
+        font-size: 2em
+
+      .year
+        font-style: italic
+
+      .overview
+
+      .rating
+
+  .nav
+    text-align: right
+
+    hr
+      border-top: 1px solid #dedede
+      width: 80%
+
+
+
+    div span
+      cursor: pointer
+
+
+  .gridcontainer
+    position: relative
+    max-width: 95%
+    margin: 0 auto
+    margin-top: 1em
+    overflow: hidden
+     
+    .poster
+      float: left
+      padding: .3em
+      position: relative
+      overflow: hidden
+      height: 280px
+
+      .img-responsive
+        max-height: 100%
+        width: auto
+
+.overlaycontainer
+  width: 60%
+  max-width: 80rem
+  padding: 2em
+  margin: 2em auto
+  border: 1px solid #c3c3c3
+  border-radius: 2px
+  background: #efefef
+
+  .section
+    padding-bottom: 2em
+  .extLinks
+    text-align: center
+
+  .overlay
+    background: white
+    border: 1px black solid
+    padding: 2em
+
+  .fa-close
+    position: absolute
+    top: 1em
+    right: 1em
+
+  p
+    margin-top: .5em
+
+  .title
+    font-size: 2em
+    font-weight: bold
+
+  .year 
+    font-size: 1em
+
+  .tagline
+    font-style: italic
+    font-weight: bold
+
+  .castContainer
+    margin-bottom: 1em
+
+  .castname
+    text-align: center
+    height: 2em
+
+
