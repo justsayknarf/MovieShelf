@@ -1,7 +1,7 @@
 # MovieShelf
 Quick Angular app using tmdb API to quickly search movie information
 
-## [Demo](https://justsayknarf.github.io/MovieShelf/)
+**[Demo](https://justsayknarf.github.io/MovieShelf/)**
 
 ## Improvements:
 - Add carousel to "Coming Soon" and "Popular" 
