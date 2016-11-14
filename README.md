@@ -3,9 +3,7 @@ Quick Angular app using tmdb API to quickly search movie information
 
 ## [Demo](https://justsayknarf.github.io/MovieShelf/)
 
-## Features to add:
-- Personalization
-- Genre filters
-- Youtube videos / trailers
-- Reviews
-- Rotten Tomatoes score
+## Improvements:
+- Add carousel to "Coming Soon" and "Popular" 
+- Hover over dialog to view more information without going to different page
+- More unit tests
