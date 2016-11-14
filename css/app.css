@@ -140,10 +140,6 @@ header {
   border: 1px solid #c3c3c3;
   border-radius: 2px;
   background: #f6f6f6; }
-  .overlaycontainer .section {
-    padding-bottom: 2em; }
-  .overlaycontainer .extLinks {
-    text-align: center; }
   .overlaycontainer .overlay {
     background: white;
     border: 1px black solid;
@@ -162,10 +158,10 @@ header {
   .overlaycontainer .tagline {
     font-style: italic;
     font-weight: bold; }
-  .overlaycontainer .castContainer {
-    margin-bottom: 1em; }
+  .overlaycontainer .cast {
+    overflow: hidden;
+    position: relative; }
   .overlaycontainer .castname {
-    text-align: center;
-    height: 2em; }
+    text-align: center; }
 
 /*# sourceMappingURL=app.css.map */
