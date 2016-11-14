@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html ng-app="movieShelfApp">
+   <head>
+      <title>MovieShelf</title>
+
+      <!-- jQuery -->
+      <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous"></script>
+
+      <!-- Bootstrap -->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+      <!-- Latest compiled and minified JavaScript -->
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+      <!-- FontAwesome -->
+      <script src="https://use.fontawesome.com/0a3f31b4cd.js"></script>
+      <link href="https://fonts.googleapis.com/css?family=Abel|Poiret+One" rel="stylesheet">
+
+      <!-- Angular -->
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-resource.min.js"></script>
+      <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular-route.js"></script>
+       <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
+
+      <link href="../css/app.css" rel="stylesheet" type="text/css">
+      <script type="text/javascript" src="../app/js/ng-infinite-scroll.js"></script>
+      <script type="text/javascript" src="../app/controllers/mainController.js"></script>
+      <script type="text/javascript" src="../app/controllers/movieService.js"></script>
+      <script type="text/javascript" src="../app/controllers/searchController.js"></script>
+      <script type="text/javascript" src="../app/controllers/landingController.js"></script>
+      <script type="text/javascript" src="../app/controllers/detailsController.js"></script>
+
+   </head>
+
+   <body>
+      <header>
+         <h1>MovieShelf</h1>
+      </header>
+
+      <div class="container center" ng-controller="landingController">
+         <h1> 
+            <span ng-class="{active : showComingSoon}" ng-click="toggleComingSoon()">Coming Soon </span> | 
+            <span ng-class="{active : !showComingSoon }" ng-click="togglePopular()">Popular Movies</span> 
+            
+         </h1> 
+
+         <div ng-hide="showComingSoon" class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12" ng-repeat="movie in popMovies">
+               <div class="row">
+                  <a href="#details/{{movie.id}}"><img class="img-responsive center-block" src={{movie.poster}}></a>
+               </div>
+               <div class="row">
+                  <a href="#details/{{movie.id}}">{{movie.title}}</a>
+               </div>
+               
+            </div>
+         </div>
+
+         <div ng-show="showComingSoon"  class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12" ng-repeat="movie in comingSoon">
+               <div class="row">
+                  <a href="#details/{{movie.id}}"><img class="img-responsive center-block" src={{movie.poster}}></a>
+               </div>
+               <div class="row">
+                  <a href="#details/{{movie.id}}">{{movie.title}}</a>
+               </div>
+               
+            </div>
+         </div>
+      </div>
+
+
+
+      <div class="container" ng-controller="searchController"> 
+         <!-- search bar -->
+         <div class="row center search">
+            <div class="col-md-12">
+            <input id="searchfield" ng-model="search" ng-model-options="{ debounce: 500 }" placeholder="Search For A Movie" />
+            <i class="fa fa-search"></i>
+            </div>
+         </div>
+
+          <!-- movie and poster first search result -->
+<!--          <div ng-show="search" class="row movieblock">
+            <div class="col-lg-4 col-md-6 poster"> 
+               <img class="img-responsive center-block" ng-src="{{poster}}" height=280/>
+            </div>
+            <div class="col-lg-8 col-md-6 details"> 
+               <span class="title">{{title}}</span> <span class="year">{{year}}</span>
+               
+               <p class="overview">{{overview}}</p>
+               <hr>
+               <p class="rating">{{rating}}</p>
+               <hr>
+               <a href="#details/{{id}}" class="details">More Details</a>
+            </div>
+          
+          </div>  -->
+          <!-- end movie poster first search result -->
+          
+          <!-- Search Results nav -->
+          <div class="row nav">
+            <div class="col-sm-12">
+             <span ng-class="{active : showList}" ng-click="toggleList()">List View</span> | 
+             <span ng-class="{active : !showList}" ng-click="toggleGrid()">Grid View</span>
+             </div>
+          </div>
+
+          <!-- search result table -->
+          <div ng-show="showList" class="row">
+            <div class="col-sm-12">
+               <table class="table table-bordered table-striped">
+                  <thead>
+                     <tr>
+                        <td>
+                           <a href="#" ng-click="sortType = 'name'; sortReverse = !sortReverse">Title <span ng-show="sortType == 'name'" class="fa fa-caret-down"></span>
+                           </a>
+                        </td>
+                        <td>
+                           <a href="#">Rating </a>
+                        </td>
+                        <td>
+                           <a href="#">Release Date </a>
+                        </td>
+                     </tr>
+               </thead>
+               <tbody>
+                  <tr ng-repeat="m in searchResults | orderBy:sortType:sortReverse">
+                     <td><a href="#details/{{m.id}}">{{ m.title }}</a></td>
+                     <td>{{ m.rating }}</td>
+                     <td>{{ m.date }}</td>
+                  </tr>
+               </tbody> 
+            </table> 
+            </div>
+         </div>
+         <!-- end search result table -->
+
+         <!-- search result poster grid -->
+         <div ng-hide="showList" class="row gridcontainer">
+            <div class="poster col-lg-3 col-md-6 col-sm-12" ng-repeat="m in searchResults">
+               <div class="row">
+                  <a href="#details/{{m.id}}">
+                  <img class="img-responsive center-block" ng-src="{{m.poster}}" /></a>
+               </div>
+            </div>
+         </div>
+
+
+      </div>
+      <!-- end of container -->
+
+      <div ng-view></div> 
+
+
+   </body>
+
+</html>
